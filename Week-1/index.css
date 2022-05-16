@@ -1,21 +1,17 @@
 
 body{
-    display: block;
     font-family: 'Lato', sans-serif;
 }
 
-.container{
-    padding-top: 0;
-    display:flex;
-    background-color: #454545;
+.main-container{
+    display: grid;
 }
 
-.tracks {
+table{
     width: 100%;
     margin-top: 20px;
-    padding-left: 40px;
+    margin-left: 40px;
     border-collapse: collapse;
-    width: 100%;
 }
   
 tr, td {
@@ -28,7 +24,12 @@ tr:nth-child(even) {
     background-color: #F0F0F0;
 }
 
+.container__tracks__link{
+    border: 2px inset black;
+}
+
 .sidenav {
+    display: flex;
     height: 100%;
     width: 40px;
     position: fixed;
@@ -36,11 +37,38 @@ tr:nth-child(even) {
     top: 0;
     left: 0;
     background-color: #f0f0f0;
-    padding-top: 50px;  
+    /* padding-top: 50px; */
+    justify-content: space-around;
+    height: 590px;
 }
 
-.icon-list{
-    margin-right: 20px;
+.sidenav__icons{
+    list-style-type: none;
+    margin-left: 20px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    line-height: 2rem;
+}
+
+.sidenav__icons__list{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.container__upper{
+    display:flex;
+    margin-left: 5px;
+    background-color: #454545;
+    color: white;
+}
+
+.container__upper__controls{
+    margin-top: 110px;
+}
+
+.container__upper__icons-list{
+    margin-right: 10px;
 }
 
 #catty-image{
@@ -48,56 +76,38 @@ tr:nth-child(even) {
     margin-top: 20px;
     margin-right: 20px;
     margin-left: 60px;
-}
-
-ul{
-    list-style-type: none;
-    margin-left: 20px;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    line-height: 6rem;
-}
-
-.content{
-    margin-left: 20px;
-    vertical-align: top;
-    color: white;
-    grid-template-columns: 15% 85%;
+    margin-bottom: 20px;
 }
 
 .footer{
     margin-top: 180px;
     padding-left: 40px;
-    width:100%;
     background-color: #43689B;
-    display: inline-flex;
+    display: flex;
     color: white;
 }
 
-.footer-img {
+.footer__img {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 80px;
 }
 
-.song {
+.footer__song {
     margin-left: 10px;
     line-height: 0.8rem;
     text-align: left;
-    padding-top: 4px;
+    padding-top: 10px;
 }
 
-.symbol {
-    text-align: center;
-    margin-top: 40px;
+.footer__controls{
+    margin-top: 45px;
+    display: flex;
+    margin-left: 500px;
 }
 
-.footer-list {
-    margin-left: 20px;
-    padding-right: 180px;
-}
-
-.foot-controls{
-    margin-left: 100px;
+.footer__controls__list {
+    display: flex;
+    margin-left: 45px;
+    padding-right: 90px;
 }
