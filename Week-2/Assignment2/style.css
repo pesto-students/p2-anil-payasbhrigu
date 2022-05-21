@@ -1,0 +1,57 @@
+#text{
+    position: absolute;
+    margin-top: 60px;
+}
+
+.main-container{
+    display:flex;
+    justify-content: center;
+    margin: 250px;
+}
+
+.squares{
+    position: relative;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+}
+
+.main-container .red{
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: top left;
+}
+
+.main-container .yellow{
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: top right;
+}
+
+.main-container .blue{
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: bottom left;
+}
+
+.main-container .green{
+    transition-property: transform;
+    transition-duration: 1s;
+    transform-origin: bottom right;
+}
+
+.main-container:hover .red{
+    transform: rotate(90deg);
+}
+
+.main-container:hover .yellow{
+    transform: rotate(-90deg);
+}
+
+.main-container:hover .blue{
+    transform: rotate(-90deg);
+}
+
+.main-container:hover .green{
+    transform: rotate(90deg);
+}
