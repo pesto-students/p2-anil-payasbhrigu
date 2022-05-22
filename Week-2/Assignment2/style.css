@@ -1,12 +1,18 @@
 #text{
     position: absolute;
-    margin-top: 60px;
+    top: 315px;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-container{
     display:flex;
     justify-content: center;
-    margin: 250px;
+    margin-top: 250px;
 }
 
 .squares{
@@ -17,24 +23,28 @@
 }
 
 .main-container .red{
+    background-color: red;
     transition-property: transform;
     transition-duration: 1s;
     transform-origin: top left;
 }
 
 .main-container .yellow{
+    background-color: yellow;
     transition-property: transform;
     transition-duration: 1s;
     transform-origin: top right;
 }
 
 .main-container .blue{
+    background-color: blue; 
     transition-property: transform;
     transition-duration: 1s;
     transform-origin: bottom left;
 }
 
 .main-container .green{
+    background-color: green;
     transition-property: transform;
     transition-duration: 1s;
     transform-origin: bottom right;
