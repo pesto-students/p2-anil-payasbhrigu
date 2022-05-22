@@ -3,7 +3,7 @@
 }
 
 body{
-    background-color: blanchedalmond;
+    background-color: brown;
 }
 
 .main-container{
@@ -23,11 +23,11 @@ body{
 
 #header__subtext{
     margin-top: 0;
-    padding-left: 5rem;
 }
 
 .content{
     display: flex;
+    flex-direction: column;
 }
 
 .article{
@@ -59,4 +59,28 @@ form{
 #submit:hover{
     background-color: blue;
     color: aliceblue;
+}
+
+@media screen and (min-width: 400px){
+    body{
+        background-color: rgb(77, 179, 186);
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 800px){
+    body{
+        background-color: beige;
+    }
+    .content{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+footer{
+    background-color: rgba(193, 155, 188, 0.338);
 }
