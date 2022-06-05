@@ -9,8 +9,10 @@ var getNumber = function() {
 
 function customPromise(executor) {
     
-    let onResolve,onReject;
+    let onResolve,onReject,onFinally;
     let currentState = '';
+    let finallyCalled = false;
+
     this.then =  function(callback) { 
         onResolve = callback;
         return this;
@@ -18,6 +20,11 @@ function customPromise(executor) {
     this.catch = function(callback) { 
         onReject = callback;
         return this;
+    }
+    this.finally = function(callback) {
+        onFinally = callback;
+        finallyCalled = true
+        currentState = 'stopped'
     }
 
     function resolve(value) { 
@@ -27,8 +34,10 @@ function customPromise(executor) {
             {
                 this.currentState = 'fulfilled'
                 onResolve(value)
-                final(() => console.log('final called'))
             }
+        if(finallyCalled === true)
+            onFinally();
+            
     }
     function reject(value) { 
         if (this.currentState === 'pending')
@@ -37,21 +46,17 @@ function customPromise(executor) {
             {
                 this.currentState = 'rejected'
                 onReject(value)
-                final(() => console.log('final called'))
             }
-    }
-    function final(callback) {
-        this.currentState = 'fulfilled';
-        callback();
+        if(finallyCalled === true)
+            onFinally();
     }
     executor(resolve,reject);
-    
 }
 
 let myPromise = new customPromise((resolve,reject)=>{
+    let val = getNumber();
+    console.log(val)
     setTimeout(() => {
-        let val = getNumber();
-        console.log(val)
         if(val%5 === 0)
             reject(val);
         else 
@@ -62,3 +67,4 @@ let myPromise = new customPromise((resolve,reject)=>{
 myPromise
         .then((val) => console.log(`Resolved: Val should be: ${val}`))
         .catch((val) => console.log(`Rejected : Val was ${val}`))
+        .finally(() => console.log('finally called'))
