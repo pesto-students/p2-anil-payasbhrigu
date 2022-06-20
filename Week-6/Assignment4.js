@@ -13,3 +13,5 @@ function maxProfit(prices){
  
 console.log(maxProfit([ 7, 1, 5, 6, 4 ]));      //! => 5
 console.log(maxProfit([ 7, 6, 4, 3, 1 ]));      //! => 0
+//Time Complexity: O(N)
+//Space Complexity: O(1)

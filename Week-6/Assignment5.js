@@ -13,3 +13,5 @@ function checkPair(arr,diff){
 console.log(checkPair([5, 10, 3, 2, 50, 80],78))    //!=> 1
 console.log(checkPair([-10, 20],30))    //! => 1
 console.log(checkPair([-20, 20],30))    //! => 0
+//Time Complexity: O(N)
+//Space Complexity: O(N)
