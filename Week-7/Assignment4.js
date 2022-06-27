@@ -30,6 +30,9 @@ function parenthesisChecker(input)
             if (top == '(' || top == '[')
                 return false;
             break;
+
+        default:
+            return false
         }
     }
     return !stack.length;
