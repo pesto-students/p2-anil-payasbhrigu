@@ -1,26 +1,32 @@
 const API_key = require('./apikey')
 const axios = require('axios')
 
+async function getCityData(url){
+    let response = await axios.get(url)
+    return response
+}
+
 class CityWeather {
-    constructor(location) {
-        this.url = `http://api.weatherapi.com/v1/current.json?key=${API_key['API_KEY']['key']}&q=${location}&aqi=no`
+    constructor(locations) {
+        this.urls = []
+        this.data = []
+        locations.forEach(location => {
+            this.urls.push(`http://api.weatherapi.com/v1/current.json?key=${API_key['API_KEY']['key']}&q=${location}&aqi=no`)
+        });
     }
 
     getURL() {
-        return this.url
+        return this.urls
     }
 
-    getWeather(){
-        axios.get(this.url)
-        .then(response => {
-            console.log(`statusCode: ${response.status}`);
-            let data = response.data
-            console.log(data);
-            return res.send(`<h1>It is ${data.current.temp_c} in ${data.location.name} Today</h1>`)
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    async getWeather(){
+       
+        for (let i = 0; i < this.urls.length; i++) {
+            const result = await getCityData(this.urls[i]);
+            this.data.push(result.data)
+        }
+        
+        return this.data
     }
 
 }
