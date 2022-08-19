@@ -1,37 +1,55 @@
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ListCollectionsCursor } = require('mongodb');
 const creds = require('./static/credentials')
-const uri = `mongodb+srv://payasbhrigu:${creds.password}@cluster0.q8duk.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const uri = `mongodb+srv://${creds.username}:${creds.password}@${creds.cluster}/?retryWrites=true&w=majority`;
+const mongoose = require('mongoose')
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-async function fetchData(){
+mongoose.connect(uri,
+    { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 },
+    (err,res) => {
+    if(err)
+        console.log(err);
+    if(res)
+        console.log("Connnection Established");
+})
 
-    try{
-        await client.connect()
+// async function fetchData(){
+
+//     try{
+//         await client.connect()
     
-        await listDatabases(client)
-    } catch(e){
-        console.log(e);
-    } finally {
-        await client.close()
-    }
-}
+//         await listDatabases(client)
 
-async function listDatabases(client) {
-    dbList = await client.db().admin().listDatabases();
-    console.log("Databases:");
-    dbList.databases.forEach(db => {
-        console.log(` - ${db.name}`);
-    });
-}
+//         await getData(client)
+//     } catch(e){
+//         console.log(e);
+//     } finally {
+//         await client.close()
+//     }
+// }
 
-// const cursor = client.db("sentAnalysis").admin()
-// cursor.listDatabases((err,db) => {
-//     // Printing the databases
-//     if(!err) console.log("db: ",db);
-//     })
-// collection = cursor.collection("sentiments")
-// return collection
+// async function listDatabases(client) {
+//     const dbList = await client.db().admin().listDatabases();
+//     console.log("Databases: ");
+//     dbList.databases.forEach(db => {
+//         console.log(` - ${db.name}`);
+//     });
+// }
 
-module.exports = fetchData
+// async function getData(client,cb){
+//     const db = await client.db("Wealth-Portfolio")
+//     const collection  = await db.collection('Users')
+//     console.log(collection);
+//     console.log("Users Data: ");
+
+//     collection.find({}).toArray(function(err, result) {
+//         // if (err) throw err;
+//         console.log(result);
+//         // db.close();
+//     });
+
+// }
+
+// module.exports = fetchData
 
